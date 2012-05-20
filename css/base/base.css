@@ -1,7 +1,6 @@
-@charset 'utf-8'
 /**  *Copyright (c) 2011-04-09, W3cplus.com. All rights reserved  *Based on YIU and Eric Meyer  */ 
 body {
-	font: 13px/1.5 sans-serif;
+	font: 13px/1.5;
 	*font-size: small;		/* for IE */
 	*font-size: x-small;	/* for IE in quirks mode */
 }
@@ -42,9 +41,11 @@ html {
 }
 
 body {
+	font-family: Arial, Helvetica, sans-serif;
 	background-color: #fff;
 	color: #444;
 	height: 100%;
+	margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, h6 strong, th, dt, b {
