@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <title>ClarenceAu's Github Blog</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <title>ClarenceAu's Github Blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/base/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/base/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/core.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="type/css" />
+    <link rel="shortcut icon" href="static/favicon.png" />
 
-        <link href="css/base/reset.css" rel="stylesheet" type="text/css" />
-        <link href="css/base/base.css" rel="stylesheet" type="text/css" />
-        <link href="css/core.css" rel="stylesheet" type="text/css" />
-        <link href="css/bootstrap.css" rel="stylesheet" type="type/css" />
-        <link rel="shortcut icon" href="static/favicon.png" />
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
 
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </head>
+  <body>
 
-    <body>
+    <h1 id="info"></h1>
 
-        
-
-        <script type="text/javascript" src="js/core.js"></script>
-        <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <!-- base -->
-        <script type="text/javascript" src="js/jscex/jscex.js"></script>
-        <!-- parser -->
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- base -->
+    <script type="text/javascript" src="js/jscex/jscex.js"></script>
+    <!-- parser -->
         <script type="text/javascript" src="js/jscex/jscex-parser.js"></script>
-        <!-- JIT -->
-        <script type="text/javascript" src="js/jscex/jscex-jit.js"></script>
-        <!-- async builder and powerpack -->
-        <script type="text/javascript" src="js/jscex/jscex-builderbase.js"></script>
-        <script type="text/javascript" src="js/jscex/jscex-async.js"></script>
-        <script type="text/javascript" src="js/jscex/jscex-async-powerpack.js"></script>
-    </body>
+    <!-- JIT -->
+    <script type="text/javascript" src="js/jscex/jscex-jit.js"></script>
+    <!-- async builder and powerpack -->
+    <script type="text/javascript" src="js/jscex/jscex-builderbase.js"></script>
+    <script type="text/javascript" src="js/jscex/jscex-async.js"></script>
+    <script type="text/javascript" src="js/jscex/jscex-async-powerpack.js"></script>
+    <script type="text/javascript">
+      var info = document.getElementById("info");
+      var str = '{\n"name":"ClarenceAu",\n"sex":"male",\n"email":"ozhencong@gmail.com"\n}'
+      var infoAsync = eval(Jscex.compile("async", function(element, str) {
+        for(var i = 0; i < str.length; i++) {
+          var span = document.createElement("span");
+          span.innerText = str[i];
+          info.appendChild(span);
+          // element.innerHTML += str[i];
+          $await(Jscex.Async.sleep(100));
+        }
+
+        info.innerText = str;
+      }));
+
+      infoAsync(info, str).start();
+    </script>
+  </body>
 </html>
