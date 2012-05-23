@@ -1,3 +1,28 @@
+Core.registerModule("container", function(sandbox) {
+	var container = null;
+	var audio = null;
+
+	return {
+		init: function() {
+			container = sandbox.container;
+			sandbox.show(container);
+
+			audio = new Audio();
+			audio.src = "static/only_you.mp3";
+			var interval = setInterval(function() {
+				if(audio.readyState != 4) {
+					console.log(audio.readyState);
+					sandbox.hide(container);
+				} else {
+					clearInterval(interval);
+					sandbox.show(container);
+				}
+			}, 50);
+		},
+		destroy: function() {}
+	};
+});
+
 Core.registerModule("stars", function(sandbox) {
 	var canvas = null, ctx = null;
 	return {

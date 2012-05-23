@@ -45,10 +45,11 @@
     <script type="text/javascript" src="js/sandbox/sandbox.js"></script>
     <script type="text/javascript" src="js/modules.js"></script>
     <script type="text/javascript">
-        var audio = document.getElementById("myAudio");
-        audio.addEventListener("readystatechange", function(evt) {
-            alert(evt.type);
-        });
+        var audio = new Audio();
+        audio.src = "static/only_you.mp3";
+        setInterval(function() {
+            console.log(audio.readyState);
+        }, 50);
     </script>
   </body>
 </html>
