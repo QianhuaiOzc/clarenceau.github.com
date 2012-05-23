@@ -1,0 +1,30 @@
+body {
+	background-color: #232256;
+}
+
+#container {
+	overflow: hidden;
+	width: 1024px;
+	height: 768px;
+	/*background-color: #cc00ff;*/
+}
+
+#stars{
+	z-index: 1;
+}
+
+#flowers {
+	position: relative;
+	top: -772px;
+	z-index: 2;
+}
+
+#words {
+	position: relative;
+	top: -1400px;
+	left: 205px;
+	z-index: 3;
+	color: #fff;
+	width: 550px;
+	height: 475px;
+}
