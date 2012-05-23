@@ -23,6 +23,7 @@ Core.registerModule("container", function(sandbox) {
 					container.appendChild(audio);
 					sandbox.hide(loading);
 					sandbox.show(container);
+					sandbox.notify({"type": "wordsBegin"});
 				}
 			}, 50);
 		},
@@ -144,8 +145,10 @@ Core.registerModule("words", function(sandbox) {
 			    $await(Jscex.Async.sleep(2000));
 			    element.innerHTML = '<span class="third"><p>'+third+"</p></span>";
 		    }));
-
-		    infoAsync(container, content, second, third).start();
+			sandbox.listen({"wordsBegin": function() {
+				infoAsync(container, content, second, third).start();	
+			}});
+		    // infoAsync(container, content, second, third).start();
 		},
 
 
