@@ -1,20 +1,27 @@
 Core.registerModule("container", function(sandbox) {
 	var container = null;
-	var audio = null;
+	var audio = null, loading = null;
 
 	return {
 		init: function() {
 			container = sandbox.container;
-			sandbox.show(container);
+
+			loading = sandbox.createElement("div");
+			loading.className = "loading";
+			document.body.appendChild(loading);
+			sandbox.hide(loading);
 
 			audio = new Audio();
 			audio.src = "static/only_you.mp3";
+			audio.autoplay = "autoplay";
 			var interval = setInterval(function() {
 				if(audio.readyState != 4) {
-					console.log(audio.readyState);
+					sandbox.show(loading);
 					sandbox.hide(container);
 				} else {
 					clearInterval(interval);
+					container.appendChild(audio);
+					sandbox.hide(loading);
 					sandbox.show(container);
 				}
 			}, 50);

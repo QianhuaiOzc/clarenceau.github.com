@@ -2,11 +2,21 @@ body {
 	background-color: #232256;
 }
 
+.loading {
+	background: url(../img/loading.gif) no-repeat;
+	margin: 0 auto;
+	width: 32px;
+	height: 32px;
+	position: relative;
+	top: -496px;
+	/*left: 368px;*/
+	z-index: 4;
+}
+
 #container {
 	overflow: hidden;
 	width: 1024px;
 	height: 768px;
-	/*background-color: #cc00ff;*/
 }
 
 #stars{
