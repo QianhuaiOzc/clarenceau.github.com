@@ -137,7 +137,7 @@ Core.registerModule("words", function(sandbox) {
 			var infoAsync = eval(Jscex.compile("async", function(element, str, second, third) {
 		        for(var i = 0; i < str.length; i++) {
 		            element.innerText += str[i];
-			        $await(Jscex.Async.sleep(50));
+			        $await(Jscex.Async.sleep(100));
 			    }
 			    element.innerText = str;
 			    $await(Jscex.Async.sleep(2000));
