@@ -137,6 +137,9 @@ Core.registerModule("words", function(sandbox) {
 			        $await(Jscex.Async.sleep(50));
 			    }
 
+			    $await(Jscex.Async.sleep(2000));
+			    element.innerHTML = "<span>最浪漫的三个字，不是我爱你</span>";
+			    element.innerHTML = "<span>而是一辈子</span>";
 			    element.innerText = str;
 		    }));
 
