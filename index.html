@@ -24,6 +24,9 @@
         <div class="c8">8 grids</div>
       </div>
     </div>
+    <audio controls="controls" id="myAudio">
+        <source src="static/only_you.mp3" type="audio/mp3" />
+    </audio>
     <div class="footer"></div>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -42,5 +45,11 @@
     <script type="text/javascript" src="js/sandbox/core.js"></script>
     <script type="text/javascript" src="js/sandbox/sandbox.js"></script>
     <script type="text/javascript" src="js/modules.js"></script>
+    <script type="text/javascript">
+        var audio = document.getElementById("myAudio");
+        audio.addEventListener("progress", function(evt) {
+            alert(evt.type)
+        });
+    </script>
   </body>
 </html>
