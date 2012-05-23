@@ -38,3 +38,17 @@ body {
 	width: 550px;
 	height: 475px;
 }
+
+.second {
+	position: absolute;
+	top: 200px;
+	left: 100px;
+	font-size: 30px;
+}
+
+.third {
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	font-size: 30px;
+}
