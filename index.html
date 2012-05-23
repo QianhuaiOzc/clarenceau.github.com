@@ -46,8 +46,8 @@
     <script type="text/javascript" src="js/modules.js"></script>
     <script type="text/javascript">
         var audio = document.getElementById("myAudio");
-        audio.addEventListener("progress", function(evt) {
-            alert(evt.type)
+        audio.addEventListener("readystatechange", function(evt) {
+            alert(evt.type);
         });
     </script>
   </body>
