@@ -117,19 +117,9 @@ Core.registerModule("flowers", function(sandbox) {
 
 Core.registerModule("words", function(sandbox) {
 	var container = null;
-	var content = "姚嘉悦：\n谢谢你，谢谢你骂我。我想没有你不断这么在身边骂我，我想我可能不知道会变得怎么样。"+
-			"我们在一起也快5年了，5年前的那一天，仍然历历在目。5年前的那一个晚上，我对自己说，我一定要努力，一定要给你好的生活。"+
-			"5年了，我不断地努力，坚持着，走到了今天。但是，自己却慢慢地忘却了一样更重要的东西。感谢你，是你的文字骂醒了我。"+
-			"让我醒悟到，所有努力的成果如果没有了一个自己最爱的人一齐分享的话，都是没有意义的。"+
-			"如果没有了你，一切都是没有意义的。今天我看一个视频，大概是一些即将毕业的大学生，对感情的坚持，里面有个人说了这么一句话，"+
-			"”工作的话，不管是在哪个岗位，都可以通过自己的努力，获得自己想要的东西。但是人如果一旦错过的话，就很难找到另一个合适的。“"+
-			"不知道是不是因为上了大三，眼看马上就要毕业了，又要找工作，我变了很多。我承认在这一年你回去以后，我真的很多时候都忽略你。"+
-			"其实，我之前就很想跟你说一段话。我发现，其实我是一个很自私的人。你偶尔会跟我说，如果不是你当时经常打扰我，我会考上中大的。但是，我其实很想跟你说，我考不上中大，其实根本就是我自己没能力。但是我是那么自私，那时候的我，常常只顾自己的学习，就不理你。我真的觉得自己很错。"+
-			"想不到，三年后，我又一次发作。不知道，你还愿不愿意再给我一次机会？我愿意再努力一次，这一次，不再为所有其他东西左右，只为你而努力，努力去爱你，真系你！"+
-			"\nPS:想起你过，我一直没有送过花给你。真实的花，我还买不起，但是在我的世界里，我送你999朵玫瑰！\n\n"+"爱你的 欧振聪";
+	
 
-	var second = "最浪漫的三个字，不是我爱你";
-	var third = "而是一辈子";
+
 	return {
 		init: function() {
 			container = sandbox.container;
@@ -146,9 +136,8 @@ Core.registerModule("words", function(sandbox) {
 			    element.innerHTML = '<span class="third"><p>'+third+"</p></span>";
 		    }));
 			sandbox.listen({"wordsBegin": function() {
-				infoAsync(container, content, second, third).start();	
+				infoAsync(container, "content", "second", "third").start();	
 			}});
-		    // infoAsync(container, content, second, third).start();
 		},
 
 
