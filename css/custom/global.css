@@ -1,0 +1,19 @@
+body {
+	background-color: #CBCBCB;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+.container_16 {
+	background-color: #FFF;
+}
+
+#nav ul {
+
+}
+
+#nav ul li {
+	display: inline-block;
+}

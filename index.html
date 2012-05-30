@@ -4,9 +4,10 @@
     <title>ClarenceAu's Github Blog</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="css/base/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/base/base.css" rel="stylesheet" type="text/css" />
-    <link href="css/base/grid.css" rel="stylesheet" type="text/css" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/text.css" rel="stylesheet" type="text/css" />
+    <link href="css/960.css" rel="stylesheet" type="text/css" />
+    <link href="css/custom/global.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="static/favicon.png" />
 
     <!--[if lt IE 9]>
@@ -17,14 +18,26 @@
 
   <body>
 
-    <div class="header"></div>    
-    <div class="container">
-      <div class="section clearfix">
-        <div class="c4"><div id="info"></div></div>
-        <div class="c8">8 grids</div>
-      </div>
+    <div class="container_16">
+        <div class="grid_16" id="nav">
+            <ul>
+                <li>["Home",</li>
+                <li>"About",</li>
+                <li>"Works"]</li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_16" id="header">
+            <h1>{"blog": "ClarenceAu", </h1>
+            <h2>"subtitle": "a coder place"}</h2>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_6" id="sidebar"></div>
+        <div class="grid_10" id="content"></div>
+        <div class="clear"></div>
+        <div class="grid_16" id="footer"></div>
+        <div class="clear"></div>
     </div>
-    <div class="footer"></div>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <!-- base -->

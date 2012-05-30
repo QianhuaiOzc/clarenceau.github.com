@@ -28,4 +28,4 @@ Core.registerModule("info", function(sandbox) {
 
 
 
-Core.startAll();
+// Core.startAll();
