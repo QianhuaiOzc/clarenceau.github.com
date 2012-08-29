@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sorting Animation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="scripts/wind-all-0.7.1.js"></script>
+	<style type="text/css">
+		#canvas {
+			position: absolute;
+			top: 70px;
+			left: 10px;
+			border: 1px solid #000;
+			width: 360px;
+			height: 360px;
+		}
+		.stripe {
+			margin: 0px;
+			position: absolute;
+			bottom: 0px;
+			display: inline-block;
+			background: #000;
+			width: 7px;
+			height: 100px;
+			border: 1px solid white;
+		}
+		.current {
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<div id="canvas">
+</div>
+<button id="bubble">Bubble Sort</button>
+<button id="selection">Selection Sort</button>
+<button id="insertion">Insertion Sort</button>
+<button id="shell">Shell Sort</button>
+<button id="quick">Quick Sort</button>
+<button id="merge">Merge Sort</button>
+<button id="bottomup">Bottom Up Merge Sort</button>
+<div>
+	Time: <span id="time"></span>&nbsp;
+	Compare Time: <span id="compare"></span>
+	Exchange Time: <span id="exchange"></span>
+	Assignment Time: <span id="assignment"></span>
+</div>
+<script type="text/javascript">
+(function() {
+	var container = $("#canvas");
+	var compareCount = 0, swapCount = 0, assignCount = 0;
+
+	function swap(array, i, j) {
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	function shulffe(array) {
+		var length = array.length - 1;
+		for(var i = length; i >= 0; i--) {
+			var index = Math.floor(Math.random() * (i) + 1);
+			swap(array, index, i);
+		}
+	}
+	function createShulffeArray(N) {
+		var array = [];
+		for(i = 0; i < N; i++) {
+			array.push(i+1);
+		}
+		shulffe(array);
+		return array;
+	}
+
+	function repaint(array) {
+		var domStripes = [];
+		for(var i = 0; i < array.length; i++) {
+			domStripes.push('<span class="stripe" style="height: '+(array[i]*7)+'px; left: '+(i*9)+'px"></span>')
+		}
+		container.html(domStripes.join(""));
+	}
+
+	var compareAsync = eval(Wind.compile("async", function(array, i, j) {
+		$await(Wind.Async.sleep(30));
+		compareCount++;
+		return array[i] - array[j];
+	}));
+
+	var exchangeAsync = eval(Wind.compile("async", function(array, i, j) {
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+		var stripes = container.children();
+		swapCount++;
+		$(stripes[i]).addClass("current");
+		$(stripes[j]).addClass("current");
+		$await(Wind.Async.sleep(80));
+		repaint(array);
+	}));
+
+	var assignAsync = eval(Wind.compile("async", function(array, i, value) {
+		array[i] = value;
+		var stripes = container.children();
+		$(stripes[i]).addClass("current");
+		$await(Wind.Async.sleep(80));
+		assignCount++;
+		repaint(array);
+	}));
+
+	var bubbleAsync = eval(Wind.compile("async", function(array) {
+		var N = array.length;
+		for(var i = 0; i < N - 1; i++) {
+			for(var j = i; j < N; j++) {
+				var result = $await(compareAsync(array, i, j));
+				if(result > 0) {
+					$await(exchangeAsync(array, i, j));
+				}
+			}
+		}
+	}));
+
+	var selectionAsync = eval(Wind.compile("async", function(array) {
+		var N = array.length;
+		for (var i = 0; i < N - 1; i++) {
+			var min = i;
+			for (var j = i + 1; j < N; j++) {
+				var result = $await(compareAsync(array, j, min));
+				if(result < 0) min = j;
+			}
+			$await(exchangeAsync(array, min, i));
+		}
+	}));
+
+	var insertionAsync = eval(Wind.compile("async", function(array, lo, hi) {
+		var N = hi;
+		for (var i = lo; i < N; i++) {
+			for (var j = i; j > lo; j--) {
+				var result = $await(compareAsync(array, j, j - 1));
+				if(result < 0) {
+					$await(exchangeAsync(array, j, j - 1));
+				} else {
+					break;
+				}
+			}
+		}
+	}));
+
+	var shellAsync = eval(Wind.compile("async", function(array) {
+		var N = array.length,
+			h = 1;
+		while(h < N / 3) {
+			h = 3 * h + 1;
+		}
+
+		while(h >= 1) {
+			for (var i = h; i < N; i++) {
+				for (var j = i; ; j -= h) {
+					if(j < h) {
+						break;
+					} else {
+						var result = $await(compareAsync(array, j, j - h));
+						if(result < 0) {
+							$await(exchangeAsync(array, j, j - h));
+						} else {
+							break;
+						}
+					}
+				}
+			}
+			h = Math.floor(h / 3);
+		}
+	}));
+
+	var quickAsync = eval(Wind.compile("async", function(array) {
+		var partitionAsync = eval(Wind.compile("async", function(lo, hi) {
+			var i = lo + 1, j = hi;
+			while(true) {
+				while(true) {
+					r = $await(compareAsync(array, i, lo));
+					if(r < 0) { i++; } else { break; }
+				}
+				while(true) {
+					r = $await(compareAsync(array, j, lo));
+					if(r > 0) { j--; } else { break; }
+				}
+				if(i >= j) break;
+				$await(exchangeAsync(array, i, j));		
+			}
+			$await(exchangeAsync(array, lo, j));
+			return j;
+		}));
+
+		var medianOf3 = eval(Wind.compile("async", function(lo, mid, hi) {
+			if((array[lo] - array[mid]) * (array[lo] - array[hi]) <= 0) {
+				return lo;
+			}
+			if((array[mid] - array[lo]) * (array[mid] - array[hi]) <= 0) {
+				return mid;
+			}
+			if((array[hi] - array[mid]) * (array[hi] - array[lo]) <= 0) {
+				return hi;
+			}
+		}));
+
+		var sortAsync = eval(Wind.compile("async", function(lo, hi) {
+			if(hi <= lo) { return; }
+			var m = $await(medianOf3(lo, Math.floor(lo + (hi - lo) / 2), hi));
+			$await(exchangeAsync(array, lo, m));
+			var pivot = $await(partitionAsync(lo, hi));
+			$await(sortAsync(lo, pivot - 1));
+			$await(sortAsync(pivot + 1, hi));
+		}));
+
+		$await(sortAsync(0, array.length - 1));
+	}));
+
+	var mergeSortAsync = eval(Wind.compile("async", function(array) {
+		var aux = [];
+		var mergeAsync = eval(Wind.compile("async", function(lo, mid, hi) {
+			var i = lo, k = lo, j = mid + 1;
+			for(; k <= hi; k++) {
+				aux[k] = array[k];
+			}
+			for(k = lo; k <= hi; k++) {
+				if(i > mid) {
+					$await(assignAsync(array, k, aux[j++]));
+				} else if(j > hi) {
+					$await(assignAsync(array, k, aux[i++]));
+				} else {
+					var r = $await(compareAsync(aux, j, i));
+					if(r < 0) {
+						$await(assignAsync(array, k, aux[j++]));
+					} else {
+						$await(assignAsync(array, k, aux[i++]));
+					}
+				}
+			}
+		}));
+
+		var sortAsync = eval(Wind.compile("async", function(lo, hi) {
+			if(hi <= lo) return;
+			// if(hi <= lo + 8 - 1) {
+			// 	$await(insertionAsync(array, lo, hi));
+			// }
+			var mid = lo + Math.floor((hi - lo) / 2);
+			$await(sortAsync(lo, mid));
+			$await(sortAsync(mid + 1, hi));
+			var check = $await(compareAsync(array, mid + 1, mid));
+			if(check > 0) {
+				return ;
+			}
+			$await(mergeAsync(lo, mid, hi));
+		}));
+
+		$await(sortAsync(0, array.length - 1));
+	}));
+
+	var bottomupMergeAsync = eval(Wind.compile("async", function(array) {
+		var aux = [];
+
+		var mergeAsync = eval(Wind.compile("async", function(lo, mid, hi) {
+			var i = lo, k = lo, j = mid + 1;
+			for(; k <= hi; k++) {
+				aux[k] = array[k];
+			}
+			for(k = lo; k <= hi; k++) {
+				if(i > mid) {
+					$await(assignAsync(array, k, aux[j++]));
+				} else if(j > hi) {
+					$await(assignAsync(array, k, aux[i++]));
+				} else {
+					var r = $await(compareAsync(aux, j, i));
+					if(r < 0) {
+						$await(assignAsync(array, k, aux[j++]));
+					} else {
+						$await(assignAsync(array, k, aux[i++]));
+					}
+				}
+			}
+		}));
+
+		var sortAsync = eval(Wind.compile("async", function() {
+			var N = array.length;
+			for (var sz = 1; sz < N; sz = sz + sz) {
+				for(var lo = 0; lo < N -sz; lo += sz + sz) {
+					$await(mergeAsync(lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1)));
+				}
+			}
+		}));
+		$await(sortAsync());
+	}));
+	
+	var sortAsync = eval(Wind.compile("async", function(sortAyncsTask) {
+		$("button").attr("disabled", "disabled");
+		var start = new Date();
+		$await(sortAyncsTask);
+		var end = new Date();
+		$("button").removeAttr("disabled");
+		$("#time").html((end - start) + "ms");
+		$("#compare").html((compareCount * 30) + "ms");
+		$("#exchange").html((swapCount * 80) + "ms");
+		$("#assignment").html((assignCount * 80) + "ms");
+		compareCount = 0;
+		swapCount = 0;
+		assignCount = 0;
+	}));
+
+
+
+	var array = createShulffeArray(40);
+	repaint(array);
+	
+	$("#selection").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(selectionAsync(newArray)).start();
+	});
+	$("#insertion").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(insertionAsync(newArray, 0, newArray.length)).start();
+	});
+	$("#shell").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(shellAsync(newArray)).start();
+	});
+	$("#quick").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(quickAsync(newArray)).start();
+	});
+	$("#merge").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(mergeSortAsync(newArray)).start();
+	});
+	$("#bottomup").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(bottomupMergeAsync(newArray)).start();
+	});
+	$("#bubble").click(function() {
+		var newArray = array.slice(0);
+		repaint(newArray);
+		sortAsync(bubbleAsync(newArray)).start();
+	});
+})();
+</script>
+</body>
+</html>
