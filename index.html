@@ -3,16 +3,75 @@
 <head>
 	<title>Sorting Animation</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="scripts/wind-all-0.7.1.js"></script>
 	<style type="text/css">
-		#canvas {
-			position: absolute;
-			top: 70px;
+		.wrapper {
+			width: 100%;
+			background: #a8a8a8;
+		}
+		/*
+		 * total width: 960px = width: 920px + padding: 20px * 2;
+		 */
+		#header, #demo {
+			display: block;
+			height: 35px;
+			width: 920px;
+			padding: 5px 20px;
+			margin: auto;
+		}
+		#logo {
+			float: left;
+		}
+		#logo h1 {
+			font-size: 25px;
+		}
+		#top-nav {
+			float: right;
+		}
+		#top-nav ul {
+
+		}
+		#top-nav ul li {
+			display: inline-block;
+			font-size: 20px;
+			padding: 7px 10px;
+		}
+		#top-nav ul li:hover {
+			padding-bottom: 4px;
+			border-bottom: 2px solid #dfdfdf;
+		}
+		#top-nav ul li a {
+
+		}
+		/*
+		 * 
+		 */
+		#demo {
+			background: #fff;
+			margin-top: 20px;
+		}
+		.demo-fr {
+			float: right;
+		}
+		.demo-fl {
+			float: left;
+		}
+		.no-bg {
+			background: #fff;
+		}
+
+		/* -----------------------------animation style --------------------------*/
+		#animation-stage {
+			position: relative;
+		/*	top: 70px;*/
 			left: 10px;
 			border: 1px solid #000;
 			width: 360px;
-			height: 360px;
+			height: 300px;
+			margin: auto;
 		}
 		.stripe {
 			margin: 0px;
@@ -30,24 +89,74 @@
 	</style>
 </head>
 <body>
-<div id="canvas">
-</div>
-<button id="bubble">Bubble Sort</button>
-<button id="selection">Selection Sort</button>
-<button id="insertion">Insertion Sort</button>
-<button id="shell">Shell Sort</button>
-<button id="quick">Quick Sort</button>
-<button id="merge">Merge Sort</button>
-<button id="bottomup">Bottom Up Merge Sort</button>
-<div>
-	Time: <span id="time"></span>&nbsp;
-	Compare Time: <span id="compare"></span>
-	Exchange Time: <span id="exchange"></span>
-	Assignment Time: <span id="assignment"></span>
-</div>
+	<div class="wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><a href="#">ClarenceAu</a></h1>
+			</div>
+			<div id="top-nav">
+				<ul>
+					<li><a href="#">Sorting Demo</a></li>
+					<li><a href="#">About</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper no-bg">
+		<div id="demo">
+			<div class="demo-fl">
+				<div id="animation-stage">
+				</div>
+			</div>
+			<div class="demo-fr">
+				<div>
+					<ul>
+						<li><button id="bubble">Bubble Sort</button></li>
+						<li><button id="selection">Selection Sort</button></li>
+						<li><button id="insertion">Insertion Sort</button></li>
+						<li><button id="shell">Shell Sort</button></li>
+						<li><button id="quick">Quick Sort</button></li>
+						<li><button id="merge">Merge Sort</button></li>
+						<li><button id="bottomup">Bottom Up Merge Sort</button></li>
+					</ul>
+					<div>
+						<p>Time: <span id="time"></span></p>
+						<p>Compare Time: <span id="compare">0ms</span></p>
+						<p>Exchange Time: <span id="exchange">0ms</span></p>
+						<p>Assignment Time: <span id="assignment">0ms</span></p>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+<!--
+	<div class="wrapper">
+		
+		<div class="main">
+			<div>
+				<button id="bubble">Bubble Sort</button>
+				<button id="selection">Selection Sort</button>
+				<button id="insertion">Insertion Sort</button>
+				<button id="shell">Shell Sort</button>
+				<button id="quick">Quick Sort</button>
+				<button id="merge">Merge Sort</button>
+				<button id="bottomup">Bottom Up Merge Sort</button>
+				<div>
+					Time: <span id="time"></span>&nbsp;
+					Compare Time: <span id="compare"></span>
+					Exchange Time: <span id="exchange"></span>
+					Assignment Time: <span id="assignment"></span>
+				</div>	
+			</div>
+			<div id="animation-stage">
+			</div>
+		</div>
+		<div class="footer"></div>
+	</div>
+-->
 <script type="text/javascript">
 (function() {
-	var container = $("#canvas");
+	var container = $("#animation-stage");
 	var compareCount = 0, swapCount = 0, assignCount = 0;
 
 	function swap(array, i, j) {
