@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.clarenceau.me/index.html</loc>
-<lastmod>2013-10-13T16:08:59-00:00</lastmod>
+<lastmod>2013-10-13T16:11:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/archives.html</loc>
-<lastmod>2013-10-13T16:08:59-00:00</lastmod>
+<lastmod>2013-10-13T16:11:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/tags.html</loc>
-<lastmod>2013-10-13T16:08:59-00:00</lastmod>
+<lastmod>2013-10-13T16:11:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/categories.html</loc>
-<lastmod>2013-10-13T16:08:59-00:00</lastmod>
+<lastmod>2013-10-13T16:11:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
