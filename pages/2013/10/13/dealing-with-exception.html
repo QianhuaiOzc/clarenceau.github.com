@@ -184,7 +184,7 @@
 </pre></div>
 
 
-<p>这段代码，就是在Throwable类中的，对于printStackTrace的具体实现。如果我们调用e.printStackTrace()，没有传入PrintStream对象的话，那么JDK就会帮我们传入System.err这个PrintStream这个在JVM中的全局对象。</p>
+<p>这段代码，就是在Throwable类中的，对于printStackTrace的具体实现。如果我们调用e.printStackTrace()，没有传入PrintStream对象的话，那么JDK就会帮我们传入System.err这个PrintStream这个在JVM中的全局对象。一旦你的程序由于依赖的某个远程服务出现异常，导致大量异常产生，那么，在访问量大，并发高的情况下，就会对这个System.err对象进行大量锁操作，严重影响系统性能。</p>
 <p>所以，一旦在框架中，直接使用e.printStackTrace()的话，一旦业务中出现了抛出大量异常的情况，就会导出大量的锁出现，严重降低了系统的性能。所以无论在正常的业务代码，还是框架的代码，都不能随便直接调用e.printStackTrace()这个方法，最好是应该通过日志框架，帮助我们把日志输出到问题。</p>
 <p>最后，老大跟我说了一句很有总结性的话，就是其实这些框架性的东西，逻辑上并不会太复杂，思路都是比较清晰的，但是框架最关键的就是要处理好上层业务的异常。</p>
                 </div><!-- /.entry-content -->
