@@ -4,49 +4,49 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/index.html</loc>
-<lastmod>2013-10-13T12:01:38-00:00</lastmod>
+<loc>http://www.clarenceau.me/index.html</loc>
+<lastmod>2013-10-13T12:15:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2013-10-13T12:01:38-00:00</lastmod>
+<loc>http://www.clarenceau.me/archives.html</loc>
+<lastmod>2013-10-13T12:15:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2013-10-13T12:01:38-00:00</lastmod>
+<loc>http://www.clarenceau.me/tags.html</loc>
+<lastmod>2013-10-13T12:15:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2013-10-13T12:01:38-00:00</lastmod>
+<loc>http://www.clarenceau.me/categories.html</loc>
+<lastmod>2013-10-13T12:15:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/framework-code-is-dealing-with-exception.html</loc>
+<loc>http://www.clarenceau.me/framework-code-is-dealing-with-exception.html</loc>
 <lastmod>2013-10-13T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/category/misc.html</loc>
+<loc>http://www.clarenceau.me/category/misc.html</loc>
 <lastmod>2013-10-13T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/author/clarenceau.html</loc>
+<loc>http://www.clarenceau.me/author/clarenceau.html</loc>
 <lastmod>2013-10-13T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
