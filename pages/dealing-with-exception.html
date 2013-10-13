@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>framework-code-is-dealing-with-exception</title>
+    <title>dealing-with-exception</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ClarenceAu">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css" />
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -30,10 +30,10 @@
         font-size: 6pt;
      }
     </style>
-    <link href="./theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="../theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="../theme/css/font-awesome.css" rel="stylesheet">
 
-    <link href="./theme/css/pygments.css" rel="stylesheet">
+    <link href="../theme/css/pygments.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -41,12 +41,12 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="./theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="../theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="../theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../theme/images/apple-touch-icon-114x114.png">
 
-    <link href="./" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 ATOM Feed" />
+    <link href="../" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 ATOM Feed" />
 
   </head>
 
@@ -60,18 +60,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="./index.html">ClarenceAu的程序人生 </a>
+          <a class="brand" href="../index.html">ClarenceAu的程序人生 </a>
           <div class="nav-collapse">
             <ul class="nav">
+                <li><a href="../pages/dealing-with-exception.html">dealing-with-exception</a></li>
                           <li class="divider-vertical"></li>
-                  <li class="active">
-                    <a href="./category/misc.html">
-						<i class="icon-folder-open icon-large"></i>misc
-					</a>
-                  </li>
 
                           <ul class="nav pull-right">
-                                <li><a href="./archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="../archives.html"><i class="icon-th-list"></i>Archives</a></li>
                           </ul>
 
             </ul>
@@ -84,49 +80,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-<section id="content">
-        <article>
-                <header>
-                        <h1>
-                                <a href=""
-                                        rel="bookmark"
-                                        title="Permalink to framework-code-is-dealing-with-exception">
-                                        framework-code-is-dealing-with-exception
-                                </a>
-                        </h1>
-                </header>
-                <div class="entry-content">
-                <div class="well">
-<footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2013-10-13T00:00:00">
-        <i class="icon-calendar"></i>2013-10-13
-</abbr>
-<span class="label">By</span>
-<a href="./author/clarenceau.html"><i class="icon-user"></i>ClarenceAu</a>
-<span class="label">Category</span>
-<a href="./category/misc.html"><i class="icon-folder-open"></i>misc</a>.
-
-
-</footer><!-- /.post-info -->                </div>
-                <h2>框架代码就是异常处理</h2>
+<section id="content" class="body">
+        <h1 class="entry-title">dealing-with-exception</h1>
+        <h2>框架代码就是异常处理</h2>
 <p>这周对系统的一个底层日志框架的代码进行了修改，老实说，这个日志框架总体来说，它的思想是很好的。但是跟很多公司里的业务系统衍生出来的底层框架一样，再开始的时候，总是会有一些开起来没那么重要的代码没有处理好，可能这个框架一开始是能够和业务系统很好地一齐工作的，但是慢慢就会暴露出很多诡异的问题。这些问题往往正是由那些一开始看起来不那么重要的代码引起的。异常处理，正是这么一种代码。</p>
-                </div><!-- /.entry-content -->
-                <div class="comments">
-                <h2>Comments !</h2>
-                        <div id="disqus_thread"></div>
-                        <script type="text/javascript">
-                           var disqus_identifier = "framework-code-is-dealing-with-exception.html";
-                           (function() {
-                                var dsq = document.createElement('script');
-                                dsq.type = 'text/javascript'; dsq.async = true;
-                                dsq.src = 'http://clarenceau.disqus.com/embed.js';
-                                (document.getElementsByTagName('head')[0] ||
-                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
-                          })();
-                        </script>
-                </div>
-        </article>
 </section>
         </div><!--/span-->
 
@@ -136,17 +93,12 @@
     <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
     <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
 <li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-<li><a href="./" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+<li><a href="../" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
     <li><a href="https://github.com/ClarenceAu"><i class="icon-Github-sign icon-large"></i>Github</a></li>
     <li><a href="http://www.zhihu.com/people/clarenceau"><i class="icon-知乎-sign icon-large"></i>知乎</a></li>
     <li><a href="http://www.douban.com/people/clarenceau/"><i class="icon-豆瓣-sign icon-large"></i>豆瓣</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="./category/misc.html">
-    <i class="icon-folder-open icon-large"></i>misc
-</a>
-</li>
 
 <li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
 
@@ -191,7 +143,7 @@ pageTracker._trackPageview();
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./theme/js/jquery-1.7.2.min.js"></script>
-    <script src="./theme/js/bootstrap.min.js"></script>
+    <script src="../theme/js/jquery-1.7.2.min.js"></script>
+    <script src="../theme/js/bootstrap.min.js"></script>
   </body>
 </html>
