@@ -1,459 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sorting Animation</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="scripts/wind-all-0.7.1.js"></script>
-	<style type="text/css">
-		.wrapper {
-			width: 100%;
-			background: #a8a8a8;
-		}
-		/*
-		 * total width: 960px = width: 920px + padding: 20px * 2;
-		 */
-		#header, #demo {
-			display: block;
-			height: 35px;
-			width: 920px;
-			padding: 5px 20px;
-			margin: auto;
-		}
-		#logo {
-			float: left;
-		}
-		#logo h1 {
-			font-size: 25px;
-		}
-		#top-nav {
-			float: right;
-		}
-		#top-nav ul {
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-		}
-		#top-nav ul li {
-			display: inline-block;
-			font-size: 20px;
-			padding: 7px 10px;
-		}
-		#top-nav ul li:hover {
-			padding-bottom: 4px;
-			border-bottom: 2px solid #dfdfdf;
-		}
-		#top-nav ul li a {
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-		}
-		/*
-		 * 
-		 */
-		#demo {
-			background: #fff;
-			margin-top: 20px;
-		}
-		.demo-fr {
-			float: right;
-		}
-		.demo-fl {
-			float: left;
-		}
-		.no-bg {
-			background: #fff;
-		}
+    <title>Clarenceau.github.com by ClarenceAu</title>
+  </head>
 
-		/* -----------------------------animation style --------------------------*/
-		#animation-stage {
-			position: relative;
-		/*	top: 70px;*/
-			left: 10px;
-			border: 1px solid #000;
-			width: 360px;
-			height: 300px;
-			margin: auto;
-		}
-		.stripe {
-			margin: 0px;
-			position: absolute;
-			bottom: 0px;
-			display: inline-block;
-			background: #000;
-			width: 7px;
-			height: 100px;
-			border: 1px solid white;
-		}
-		.current {
-			background: red;
-		}
-	</style>
-</head>
-<body>
-	<div class="wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">ClarenceAu</a></h1>
-			</div>
-			<div id="top-nav">
-				<ul>
-					<li><a href="#">Sorting Demo</a></li>
-					<li><a href="#">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="wrapper no-bg">
-		<div id="demo">
-			<div class="demo-fl">
-				<div id="animation-stage">
-				</div>
-			</div>
-			<div class="demo-fr">
-				<div>
-					<ul>
-						<li><button id="bubble">Bubble Sort</button></li>
-						<li><button id="selection">Selection Sort</button></li>
-						<li><button id="insertion">Insertion Sort</button></li>
-						<li><button id="shell">Shell Sort</button></li>
-						<li><button id="quick">Quick Sort</button></li>
-						<li><button id="merge">Merge Sort</button></li>
-						<li><button id="bottomup">Bottom Up Merge Sort</button></li>
-					</ul>
-					<div>
-						<p>Time: <span id="time"></span></p>
-						<p>Compare Time: <span id="compare">0ms</span></p>
-						<p>Exchange Time: <span id="exchange">0ms</span></p>
-						<p>Assignment Time: <span id="assignment">0ms</span></p>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</div>
-<!--
-	<div class="wrapper">
-		
-		<div class="main">
-			<div>
-				<button id="bubble">Bubble Sort</button>
-				<button id="selection">Selection Sort</button>
-				<button id="insertion">Insertion Sort</button>
-				<button id="shell">Shell Sort</button>
-				<button id="quick">Quick Sort</button>
-				<button id="merge">Merge Sort</button>
-				<button id="bottomup">Bottom Up Merge Sort</button>
-				<div>
-					Time: <span id="time"></span>&nbsp;
-					Compare Time: <span id="compare"></span>
-					Exchange Time: <span id="exchange"></span>
-					Assignment Time: <span id="assignment"></span>
-				</div>	
-			</div>
-			<div id="animation-stage">
-			</div>
-		</div>
-		<div class="footer"></div>
-	</div>
--->
-<script type="text/javascript">
-(function() {
-	var container = $("#animation-stage");
-	var compareCount = 0, swapCount = 0, assignCount = 0;
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Clarenceau.github.com</h1>
+        <h2>My Github Blog</h2>
+        <a href="https://github.com/ClarenceAu" class="button"><small>Follow me on</small>GitHub</a>
+      </div>
+    </header>
 
-	function swap(array, i, j) {
-		var temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-	}
-	function shulffe(array) {
-		var length = array.length - 1;
-		for(var i = length; i >= 0; i--) {
-			var index = Math.floor(Math.random() * (i) + 1);
-			swap(array, index, i);
-		}
-	}
-	function createShulffeArray(N) {
-		var array = [];
-		for(i = 0; i < N; i++) {
-			array.push(i+1);
-		}
-		shulffe(array);
-		return array;
-	}
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-	function repaint(array) {
-		var domStripes = [];
-		for(var i = 0; i < array.length; i++) {
-			domStripes.push('<span class="stripe" style="height: '+(array[i]*7)+'px; left: '+(i*9)+'px"></span>')
-		}
-		container.html(domStripes.join(""));
-	}
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-	var compareAsync = eval(Wind.compile("async", function(array, i, j) {
-		$await(Wind.Async.sleep(30));
-		compareCount++;
-		return array[i] - array[j];
-	}));
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
 
-	var exchangeAsync = eval(Wind.compile("async", function(array, i, j) {
-		var temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-		var stripes = container.children();
-		swapCount++;
-		$(stripes[i]).addClass("current");
-		$(stripes[j]).addClass("current");
-		$await(Wind.Async.sleep(80));
-		repaint(array);
-	}));
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
-	var assignAsync = eval(Wind.compile("async", function(array, i, value) {
-		array[i] = value;
-		var stripes = container.children();
-		$(stripes[i]).addClass("current");
-		$await(Wind.Async.sleep(80));
-		assignCount++;
-		repaint(array);
-	}));
+<h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-	var bubbleAsync = eval(Wind.compile("async", function(array) {
-		var N = array.length;
-		for(var i = 0; i < N - 1; i++) {
-			for(var j = i; j < N; j++) {
-				var result = $await(compareAsync(array, i, j));
-				if(result > 0) {
-					$await(exchangeAsync(array, i, j));
-				}
-			}
-		}
-	}));
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
 
-	var selectionAsync = eval(Wind.compile("async", function(array) {
-		var N = array.length;
-		for (var i = 0; i < N - 1; i++) {
-			var min = i;
-			for (var j = i + 1; j < N; j++) {
-				var result = $await(compareAsync(array, j, min));
-				if(result < 0) min = j;
-			}
-			$await(exchangeAsync(array, min, i));
-		}
-	}));
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
 
-	var insertionAsync = eval(Wind.compile("async", function(array, lo, hi) {
-		var N = hi;
-		for (var i = lo; i < N; i++) {
-			for (var j = i; j > lo; j--) {
-				var result = $await(compareAsync(array, j, j - 1));
-				if(result < 0) {
-					$await(exchangeAsync(array, j, j - 1));
-				} else {
-					break;
-				}
-			}
-		}
-	}));
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
 
-	var shellAsync = eval(Wind.compile("async", function(array) {
-		var N = array.length,
-			h = 1;
-		while(h < N / 3) {
-			h = 3 * h + 1;
-		}
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-		while(h >= 1) {
-			for (var i = h; i < N; i++) {
-				for (var j = i; ; j -= h) {
-					if(j < h) {
-						break;
-					} else {
-						var result = $await(compareAsync(array, j, j - h));
-						if(result < 0) {
-							$await(exchangeAsync(array, j, j - h));
-						} else {
-							break;
-						}
-					}
-				}
-			}
-			h = Math.floor(h / 3);
-		}
-	}));
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-	var quickAsync = eval(Wind.compile("async", function(array) {
-		var partitionAsync = eval(Wind.compile("async", function(lo, hi) {
-			var i = lo + 1, j = hi;
-			while(true) {
-				while(true) {
-					r = $await(compareAsync(array, i, lo));
-					if(r < 0) { i++; } else { break; }
-				}
-				while(true) {
-					r = $await(compareAsync(array, j, lo));
-					if(r > 0) { j--; } else { break; }
-				}
-				if(i >= j) break;
-				$await(exchangeAsync(array, i, j));		
-			}
-			$await(exchangeAsync(array, lo, j));
-			return j;
-		}));
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-		var medianOf3 = eval(Wind.compile("async", function(lo, mid, hi) {
-			if((array[lo] - array[mid]) * (array[lo] - array[hi]) <= 0) {
-				return lo;
-			}
-			if((array[mid] - array[lo]) * (array[mid] - array[hi]) <= 0) {
-				return mid;
-			}
-			if((array[hi] - array[mid]) * (array[hi] - array[lo]) <= 0) {
-				return hi;
-			}
-		}));
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+        </section>
 
-		var sortAsync = eval(Wind.compile("async", function(lo, hi) {
-			if(hi <= lo) { return; }
-			var m = $await(medianOf3(lo, Math.floor(lo + (hi - lo) / 2), hi));
-			$await(exchangeAsync(array, lo, m));
-			var pivot = $await(partitionAsync(lo, hi));
-			$await(sortAsync(lo, pivot - 1));
-			$await(sortAsync(pivot + 1, hi));
-		}));
-
-		$await(sortAsync(0, array.length - 1));
-	}));
-
-	var mergeSortAsync = eval(Wind.compile("async", function(array) {
-		var aux = [];
-		var mergeAsync = eval(Wind.compile("async", function(lo, mid, hi) {
-			var i = lo, k = lo, j = mid + 1;
-			for(; k <= hi; k++) {
-				aux[k] = array[k];
-			}
-			for(k = lo; k <= hi; k++) {
-				if(i > mid) {
-					$await(assignAsync(array, k, aux[j++]));
-				} else if(j > hi) {
-					$await(assignAsync(array, k, aux[i++]));
-				} else {
-					var r = $await(compareAsync(aux, j, i));
-					if(r < 0) {
-						$await(assignAsync(array, k, aux[j++]));
-					} else {
-						$await(assignAsync(array, k, aux[i++]));
-					}
-				}
-			}
-		}));
-
-		var sortAsync = eval(Wind.compile("async", function(lo, hi) {
-			if(hi <= lo) return;
-			// if(hi <= lo + 8 - 1) {
-			// 	$await(insertionAsync(array, lo, hi));
-			// }
-			var mid = lo + Math.floor((hi - lo) / 2);
-			$await(sortAsync(lo, mid));
-			$await(sortAsync(mid + 1, hi));
-			var check = $await(compareAsync(array, mid + 1, mid));
-			if(check > 0) {
-				return ;
-			}
-			$await(mergeAsync(lo, mid, hi));
-		}));
-
-		$await(sortAsync(0, array.length - 1));
-	}));
-
-	var bottomupMergeAsync = eval(Wind.compile("async", function(array) {
-		var aux = [];
-
-		var mergeAsync = eval(Wind.compile("async", function(lo, mid, hi) {
-			var i = lo, k = lo, j = mid + 1;
-			for(; k <= hi; k++) {
-				aux[k] = array[k];
-			}
-			for(k = lo; k <= hi; k++) {
-				if(i > mid) {
-					$await(assignAsync(array, k, aux[j++]));
-				} else if(j > hi) {
-					$await(assignAsync(array, k, aux[i++]));
-				} else {
-					var r = $await(compareAsync(aux, j, i));
-					if(r < 0) {
-						$await(assignAsync(array, k, aux[j++]));
-					} else {
-						$await(assignAsync(array, k, aux[i++]));
-					}
-				}
-			}
-		}));
-
-		var sortAsync = eval(Wind.compile("async", function() {
-			var N = array.length;
-			for (var sz = 1; sz < N; sz = sz + sz) {
-				for(var lo = 0; lo < N -sz; lo += sz + sz) {
-					$await(mergeAsync(lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1)));
-				}
-			}
-		}));
-		$await(sortAsync());
-	}));
-	
-	var sortAsync = eval(Wind.compile("async", function(sortAyncsTask) {
-		$("button").attr("disabled", "disabled");
-		var start = new Date();
-		$await(sortAyncsTask);
-		var end = new Date();
-		$("button").removeAttr("disabled");
-		$("#time").html((end - start) + "ms");
-		$("#compare").html((compareCount * 30) + "ms");
-		$("#exchange").html((swapCount * 80) + "ms");
-		$("#assignment").html((assignCount * 80) + "ms");
-		compareCount = 0;
-		swapCount = 0;
-		assignCount = 0;
-	}));
+        <aside id="sidebar">
 
 
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
-	var array = createShulffeArray(40);
-	repaint(array);
-	
-	$("#selection").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(selectionAsync(newArray)).start();
-	});
-	$("#insertion").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(insertionAsync(newArray, 0, newArray.length)).start();
-	});
-	$("#shell").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(shellAsync(newArray)).start();
-	});
-	$("#quick").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(quickAsync(newArray)).start();
-	});
-	$("#merge").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(mergeSortAsync(newArray)).start();
-	});
-	$("#bottomup").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(bottomupMergeAsync(newArray)).start();
-	});
-	$("#bubble").click(function() {
-		var newArray = array.slice(0);
-		repaint(newArray);
-		sortAsync(bubbleAsync(newArray)).start();
-	});
-})();
-</script>
-</body>
+  
+  </body>
 </html>
