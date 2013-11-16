@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>ClarenceAu的程序人生</title>
+    <title>ClarenceAu的程序人生 - OSGi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ClarenceAu">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css" />
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -30,10 +30,10 @@
         font-size: 6pt;
      }
     </style>
-    <link href="./theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="../theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="../theme/css/font-awesome.css" rel="stylesheet">
 
-    <link href="./theme/css/pygments.css" rel="stylesheet">
+    <link href="../theme/css/pygments.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -41,13 +41,13 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="./theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="../theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="../theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../theme/images/apple-touch-icon-114x114.png">
 
-    <link href="./" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 ATOM Feed" />
-    <link href="./feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 RSS Feed" />
+    <link href="../" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 ATOM Feed" />
+    <link href="../feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="ClarenceAu的程序人生 RSS Feed" />
 
   </head>
 
@@ -61,14 +61,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="./index.html">ClarenceAu的程序人生 </a>
+          <a class="brand" href="../index.html">ClarenceAu的程序人生 </a>
           <div class="nav-collapse">
             <ul class="nav">
-                <li><a href="./pages/about.html">About</a></li>
+                <li><a href="../pages/about.html">About</a></li>
                           <li class="divider-vertical"></li>
 
                           <ul class="nav pull-right">
-                                <li><a href="./archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="../archives.html"><i class="icon-th-list"></i>Archives</a></li>
                           </ul>
 
             </ul>
@@ -81,24 +81,43 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="../pages/2013/10/19/osgi-learning.html">OSGi学习</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-10-19T00:00:00">
+        <i class="icon-calendar"></i>2013-10-19
+</abbr>
+<span class="label">By</span>
+<a href="../author/clarenceau.html"><i class="icon-user"></i>ClarenceAu</a>
+<span class="label">Category</span>
+<a href="../category/bian-cheng-shi-jian.html"><i class="icon-folder-open"></i>编程实践</a>.
+
+
+<span class="label">Tags</span>
+	<a href="../tag/osgi.html"><i class="icon-tag"></i>OSGi</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>做Java的同学，对于模块化一定不会陌生。而在Java领域中，关于模块化最有名的莫过于就是OSGi标准。</p>
+<p>很多刚开始学习，或者使用Java开发的同学可能觉得，Java不是已经有比较完善的包管理，以及可见性管理的机制了吗？为什么还需要专门定义一个这么难懂的模块化标准呢？这个问题，其实也困扰了我很久，并且也成为我学习OSGi的一个障碍。</p>
+<p>直到我真正开始在天猫工作，面对天猫如此复杂的业务系统的时候，我终于才发现，虽然Java已经有包管理的机制，但是Java对于真正模块化的支持，在复杂的业务面前，是如此之弱啊。所以，我又重新开始了学习OSGi之路。</p>
+<h2>为什么Java需要OSGi标准</h2>
 <ul>
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
-<li class="tag-4">
-	<a href="./tag/osgi.html">
-		<i class="icon-tag icon-large"></i>OSGi
-	</a>
-</li>
-<li class="tag-4">
-	<a href="./tag/coding-practice.html">
-		<i class="icon-tag icon-large"></i>coding practice
-	</a>
-</li>
-<li class="tag-4">
-	<a href="./tag/data-mining.html">
-		<i class="icon-tag icon-large"></i>data mining
-	</a>
-</li>
+<li>过于低层代码的可见控制</li>
+<li>容易出错的类路径概念</li>
+<li>部署和管理支持上的不足</li>
 </ul>
+<h2>OSGi的分层架构</h2>
+<ul>
+<li>模块层   -- 代码的打包和共享</li>
+<li>生命周期层 -- 提供执行时模块管理和对底层OSGi框架的访问</li>
+<li>服务层 -- 模块内的组件间交互和通信</li>
+</ul>
+                        <a class="btn primary xsmall" href="../pages/2013/10/19/osgi-learning.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+       
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">
@@ -107,36 +126,36 @@
     <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
     <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
 <li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-<li><a href="./feeds/all.rss.xml" rel="alternate"><i class="icon-bookmark icon-large"></i>rss feed</a></li>
+<li><a href="../feeds/all.rss.xml" rel="alternate"><i class="icon-bookmark icon-large"></i>rss feed</a></li>
     <li><a href="https://github.com/ClarenceAu"><i class="icon-Github-sign icon-large"></i>Github</a></li>
     <li><a href="http://www.zhihu.com/people/clarenceau"><i class="icon-知乎-sign icon-large"></i>知乎</a></li>
     <li><a href="http://www.douban.com/people/clarenceau/"><i class="icon-豆瓣-sign icon-large"></i>豆瓣</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
 <li>
-<a href="./category/bian-cheng-shi-jian.html">
+<a href="../category/bian-cheng-shi-jian.html">
     <i class="icon-folder-open icon-large"></i>编程实践
 </a>
 </li>
 <li>
-<a href="./category/shu-ju-wa-jue.html">
+<a href="../category/shu-ju-wa-jue.html">
     <i class="icon-folder-open icon-large"></i>数据挖掘
 </a>
 </li>
 
 <li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
 <li class="tag-4">
-    <a href="./tag/osgi.html">
+    <a href="../tag/osgi.html">
         <i class="icon-tag icon-large"></i>OSGi
     </a>
 </li>
 <li class="tag-4">
-    <a href="./tag/coding-practice.html">
+    <a href="../tag/coding-practice.html">
         <i class="icon-tag icon-large"></i>coding practice
     </a>
 </li>
 <li class="tag-4">
-    <a href="./tag/data-mining.html">
+    <a href="../tag/data-mining.html">
         <i class="icon-tag icon-large"></i>data mining
     </a>
 </li>
@@ -182,7 +201,7 @@ pageTracker._trackPageview();
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./theme/js/jquery-1.7.2.min.js"></script>
-    <script src="./theme/js/bootstrap.min.js"></script>
+    <script src="../theme/js/jquery-1.7.2.min.js"></script>
+    <script src="../theme/js/bootstrap.min.js"></script>
   </body>
 </html>

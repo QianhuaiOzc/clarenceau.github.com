@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ClarenceAu的程序人生</title><link>http://www.clarenceau.me/</link><description></description><atom:link href="http://www.clarenceau.me/feeds/bian-cheng-shi-jian.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 13 Oct 2013 00:00:00 +0800</lastBuildDate><item><title>框架代码就是异常处理</title><link>http://www.clarenceau.me/pages/2013/10/13/dealing-with-exception.html</link><description>&lt;p&gt;这周对系统的一个底层日志框架的代码进行了修改，老实说，这个日志框架总体来说，它的思想是很好的。但是由于框架中对于异常的处理没有使用恰当的方式，现在导致了整个日志框架可能会被下线。&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ClarenceAu的程序人生</title><link>http://www.clarenceau.me/</link><description></description><atom:link href="http://www.clarenceau.me/feeds/bian-cheng-shi-jian.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 19 Oct 2013 00:00:00 +0800</lastBuildDate><item><title>OSGi学习</title><link>http://www.clarenceau.me/pages/2013/10/19/osgi-learning.html</link><description>&lt;p&gt;做Java的同学，对于模块化一定不会陌生。而在Java领域中，关于模块化最有名的莫过于就是OSGi标准。&lt;/p&gt;
+&lt;p&gt;很多刚开始学习，或者使用Java开发的同学可能觉得，Java不是已经有比较完善的包管理，以及可见性管理的机制了吗？为什么还需要专门定义一个这么难懂的模块化标准呢？这个问题，其实也困扰了我很久，并且也成为我学习OSGi的一个障碍。&lt;/p&gt;
+&lt;p&gt;直到我真正开始在天猫工作，面对天猫如此复杂的业务系统的时候，我终于才发现，虽然Java已经有包管理的机制，但是Java对于真正模块化的支持，在复杂的业务面前，是如此之弱啊。所以，我又重新开始了学习OSGi之路。&lt;/p&gt;
+&lt;h2&gt;为什么Java需要OSGi标准&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;过于低层代码的可见控制&lt;/li&gt;
+&lt;li&gt;容易出错的类路径概念&lt;/li&gt;
+&lt;li&gt;部署和管理支持上的不足&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;OSGi的分层架构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;模块层   -- 代码的打包和共享&lt;/li&gt;
+&lt;li&gt;生命周期层 -- 提供执行时模块管理和对底层OSGi框架的访问&lt;/li&gt;
+&lt;li&gt;服务层 -- 模块内的组件间交互和通信&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ClarenceAu</dc:creator><pubDate>Sat, 19 Oct 2013 00:00:00 +0800</pubDate><guid>tag:www.clarenceau.me,2013-10-19:pages/2013/10/19/osgi-learning.html</guid><category>OSGi</category></item><item><title>框架代码就是异常处理</title><link>http://www.clarenceau.me/pages/2013/10/13/dealing-with-exception.html</link><description>&lt;p&gt;这周对系统的一个底层日志框架的代码进行了修改，老实说，这个日志框架总体来说，它的思想是很好的。但是由于框架中对于异常的处理没有使用恰当的方式，现在导致了整个日志框架可能会被下线。&lt;/p&gt;
 &lt;p&gt;在跟老大一齐review了一些框架的代码之后，我们找到了几个明显的异常处理问题，我特此拿出来跟大家分享一下。&lt;/p&gt;
 &lt;h3&gt;吃掉了业务异常&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// 代码片段1：&lt;/span&gt;

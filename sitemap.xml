@@ -5,37 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.clarenceau.me/index.html</loc>
-<lastmod>2013-10-13T21:08:30-00:00</lastmod>
+<lastmod>2013-11-16T21:30:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/archives.html</loc>
-<lastmod>2013-10-13T21:08:30-00:00</lastmod>
+<lastmod>2013-11-16T21:30:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/tags.html</loc>
-<lastmod>2013-10-13T21:08:30-00:00</lastmod>
+<lastmod>2013-11-16T21:30:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/categories.html</loc>
-<lastmod>2013-10-13T21:08:30-00:00</lastmod>
+<lastmod>2013-11-16T21:30:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.clarenceau.me/pages/about.html</loc>
-<lastmod>2013-10-13T21:08:30-00:00</lastmod>
+<lastmod>2013-11-16T21:30:40-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://www.clarenceau.me/pages/2013/11/16/data-mining-introduction.html</loc>
+<lastmod>2013-11-16T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.clarenceau.me/pages/2013/10/19/osgi-learning.html</loc>
+<lastmod>2013-10-19T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -47,7 +61,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.clarenceau.me/category/bian-cheng-shi-jian.html</loc>
-<lastmod>2013-10-13T00:00:00-00:00</lastmod>
+<lastmod>2013-10-19T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.clarenceau.me/category/shu-ju-wa-jue.html</loc>
+<lastmod>2013-11-16T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.clarenceau.me/tag/osgi.html</loc>
+<lastmod>2013-10-19T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -60,8 +88,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.clarenceau.me/tag/data-mining.html</loc>
+<lastmod>2013-11-16T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.clarenceau.me/author/clarenceau.html</loc>
-<lastmod>2013-10-13T00:00:00-00:00</lastmod>
+<lastmod>2013-11-16T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

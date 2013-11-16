@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ClarenceAu的程序人生</title><link>http://www.clarenceau.me/</link><description></description><atom:link href="http://www.clarenceau.me/feeds/shu-ju-wa-jue.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 16 Nov 2013 00:00:00 +0800</lastBuildDate><item><title>数据挖掘-概念与技术 第一章笔记</title><link>http://www.clarenceau.me/pages/2013/11/16/data-mining-introduction.html</link><description>&lt;h1&gt;数据挖掘-概念与技术&lt;/h1&gt;
+&lt;h2&gt;第一章 介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;数据挖掘的意义&lt;/li&gt;
+&lt;li&gt;数据挖掘的定义&lt;/li&gt;
+&lt;li&gt;数据挖掘各方面的介绍&lt;ol&gt;
+&lt;li&gt;什么数据是可以用于数据挖掘的&lt;/li&gt;
+&lt;li&gt;数据挖掘可以得到什么信息&lt;/li&gt;
+&lt;li&gt;数据挖掘的技术/手段有哪些&lt;/li&gt;
+&lt;li&gt;应用场景&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;数据挖掘当前的发展趋势&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据挖掘的意义&lt;/h3&gt;
+&lt;p&gt;数据挖掘的意义就在于信息时代的到来，导致大量数据的产生，但这些大量的数据却无法转化为有效的信息，或者成为知识。因此需要有效的工具用于分析这些大量的数据。数据挖掘的意义就是找到强有效的工具和方法来分析大量数据，并且在其中找到有意义的信息。&lt;/p&gt;
+&lt;h3&gt;数据挖掘的定义&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Data mining&lt;/strong&gt; is the &lt;em&gt;process&lt;/em&gt; of discovering interesting patterns and knowledge from &lt;em&gt;large&lt;/em&gt; amounts of data.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据挖掘&lt;/strong&gt;就是从&lt;em&gt;大量&lt;/em&gt;数据中找到有效的模式以及知识的&lt;em&gt;方法&lt;/em&gt;。 &lt;/p&gt;
+&lt;h4&gt;数据挖掘的基本步骤&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;数据清理&lt;/li&gt;
+&lt;li&gt;数据整合&lt;/li&gt;
+&lt;li&gt;数据筛选&lt;/li&gt;
+&lt;li&gt;数据转换&lt;/li&gt;
+&lt;li&gt;数据挖掘&lt;/li&gt;
+&lt;li&gt;模式评估&lt;/li&gt;
+&lt;li&gt;知识展现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;可以被挖掘的数据&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;存储在关系数据库中的数据&lt;/li&gt;
+&lt;li&gt;数据仓库中的数据&lt;/li&gt;
+&lt;li&gt;事务数据&lt;/li&gt;
+&lt;li&gt;其他各种数据，如：时间相关的交易数据等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;可以被数据挖掘发现的模式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Class/Concept Description&lt;/strong&gt;
+类型/概念的描述&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Data characterization&lt;/em&gt;
+数据特征
+一组特定的数据的特征或者是特性&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Data discrimination&lt;/em&gt;
+数据区分
+把一组数据的一般特征与另外一组或多组的数据的特征进行比较，找出其中的区别&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Frequent Pattern: Associasion and Correlation&lt;/strong&gt;
+频繁模式：关联与相关&lt;/p&gt;
+&lt;p&gt;频繁模式就是指在一批数据中经常出现的一些数据模式，例如&lt;em&gt;频繁物品集合&lt;/em&gt;、&lt;em&gt;频繁序列&lt;/em&gt;、&lt;em&gt;频繁结构&lt;/em&gt;。&lt;strong&gt;频繁物品集合&lt;/strong&gt; 就是指那些在大量的事务数据中通常会出现在一起的物品，例如牛奶和面包，通常都会在商店中被一起购买。&lt;strong&gt;频繁序列&lt;/strong&gt; 就是指在数据中，常常以相似的顺序出现的，例如，通常人们会先买一个笔记本电脑，然后再买一台数码相机，之后会再买一张SD卡。&lt;strong&gt;频繁结构&lt;/strong&gt; 就是指那些频繁由相似的&lt;em&gt;频繁序列&lt;/em&gt;和&lt;em&gt;频繁物品集合&lt;/em&gt;组合成的结构。&lt;/p&gt;
+&lt;p&gt;通过对数据中的频繁模式进行数据挖掘，我们就可以得到数据中数据的关联性与相关性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Classification and Regression for Predictive Analysis&lt;/strong&gt;
+用于预测分析的分类与回归&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分类分析&lt;/strong&gt; 通常用于在数据中找到一个&lt;em&gt;模型&lt;/em&gt;来描述一个特定的物品类型的特征。可以事先用一个训练数据集合来得到这个模型。分类分析的方法有很多：&lt;em&gt;决策树&lt;/em&gt;、&lt;em&gt;规则引擎&lt;/em&gt;、&lt;em&gt;神经网络&lt;/em&gt;、&lt;em&gt;平凡贝叶斯&lt;/em&gt;、&lt;em&gt;k-NN&lt;/em&gt;以及&lt;em&gt;支持向量机(SVM)&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;回归分析&lt;/strong&gt; 是一种统计学上的方法。上面的分类分析更多是基于离散的数据进行的，而回归分析则是多用于连续的数据，用于预测发展的趋势，并且能得到相关的数字。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cluster Analysis&lt;/strong&gt;
+聚类分析&lt;/p&gt;
+&lt;p&gt;聚类分析不同于分类分析，分类分析通常是基于一些已经被标记的数据而进行分析的。但是数据往往在一开始是没有任何分类标记的，这时，聚类分析就可以发挥作用。聚类分析的原则可以简单描述为：&lt;em&gt;最大化同类中的相似度，而最小化不同类的相似度&lt;/em&gt;。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ClarenceAu</dc:creator><pubDate>Sat, 16 Nov 2013 00:00:00 +0800</pubDate><guid>tag:www.clarenceau.me,2013-11-16:pages/2013/11/16/data-mining-introduction.html</guid><category>data mining</category></item></channel></rss>
